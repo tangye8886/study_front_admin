@@ -12,14 +12,14 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://127.0.0.1:8002/api/vedio/fileUpload',
+        target: 'http://192.168.196.102:8002/api/vedio/fileUpload',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
         }
       },
       '/api/**': {
-        target: 'http://127.0.0.1:9100/study-admin/'
+        target: 'http://192.168.196.102:9100/study-admin/'
       },
     },
 
