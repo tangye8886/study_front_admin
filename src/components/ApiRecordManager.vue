@@ -16,6 +16,10 @@
       <!--表单-->
       <template>
           <el-table
+          v-loading="loading"
+          element-loading-text="Loading..."
+          element-loading-spinner="el-icon-loading"
+          element-loading-background="rgba(255,255,255,0.8)"
             :data="tableData"
             style="width: 100%"
             @selection-change="handleSelectionChange" >
@@ -118,6 +122,7 @@
 export default {
   data () {
     return {
+      loading:true,
       msg: '接口调用记录',
       resubmit:false,
       currentUserNo:sessionStorage.getItem('currentUserID'),
@@ -191,6 +196,7 @@ export default {
           this.tableData=response.data.data.list;
           this.page.total=response.data.data.total;
           this.page.index=response.data.data.pageNum;
+          this.loading=false;
         });
       },
       //分页触发的方法

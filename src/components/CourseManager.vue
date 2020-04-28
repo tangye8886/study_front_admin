@@ -47,6 +47,10 @@
       <template>
           <el-table
             :data="tableData"
+            v-loading="loading"
+            element-loading-text="Loading..."
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(255,255,255,0.8)"
             style="width: 100%"
             @selection-change="handleSelectionChange" >
             <el-table-column
@@ -157,9 +161,9 @@
                   </el-option>
                 </el-select>
               </el-form-item>
-              <el-form-item label="课程图片">
+              <el-form-item label="课程图片" v-if="!isQuery">
                 <el-avatar shape="square" class="myImg" fit="scale-down" :size="100" :src="form.image" v-if="showImg"></el-avatar>
-                <input class="upload-demo" multiple type="file" ref="file" id="uploadFile" @change="fileUpload($event)" v-if="!isQuery" />
+                <input class="upload-demo" multiple type="file" ref="file" id="uploadFile" @change="fileUpload($event)"/>
              </el-form-item>
            </el-form>
 
@@ -182,6 +186,7 @@
 export default {
   data () {
     return {
+      isLoading: true, //是否正在加载
       imageSrc:'',
       optFlag:false,
       resubmit:false,
@@ -325,6 +330,7 @@ export default {
           this.tableData=response.data.data.list;
           this.page.total=response.data.data.total;
           this.page.index=response.data.data.pageNum;
+          this.loading=false;
         })
         .catch(function (error) { // 请求失败处理
           console.log(error);

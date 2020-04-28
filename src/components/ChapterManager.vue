@@ -32,6 +32,10 @@
       <!--表单-->
       <template>
           <el-table
+            v-loading="loading"
+            element-loading-text="Loading..."
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(255,255,255,0.8)"
             :data="tableData"
             style="width: 100%"
             @selection-change="handleSelectionChange" >
@@ -115,6 +119,7 @@
 export default {
   data () {
     return {
+      loading:true,
       msg: '章节列表',
       resubmit:false,
       currentUserNo:sessionStorage.getItem('currentUserID'),
@@ -208,6 +213,7 @@ export default {
           that.tableData=response.data.data.list;
           that.page.total=response.data.data.total;
           that.page.index=response.data.data.pageNum;
+          that.loading=false;
         })
         .catch(function (error) { // 请求失败处理
           console.log(error);
