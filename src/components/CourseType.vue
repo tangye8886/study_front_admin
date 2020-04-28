@@ -108,7 +108,7 @@ export default {
           index:1,
           flag:true,
       },
-      mytitle:'编辑课程信息',
+      mytitle:'编辑课程类型信息',
       isQuery: true,  //默认是查询操作
       isEdit:false,
       isAdd:false,

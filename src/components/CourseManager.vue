@@ -252,7 +252,6 @@ export default {
       fileUpload(e) {
         let that=this;
         let post_url="http://192.168.196.102:8002/api/vedio/fileUpload";
-        //api/admin/vedio/fileUpload
         var _this = this;
         var formData = new FormData();
         formData.append("file",e.target.files[0]);

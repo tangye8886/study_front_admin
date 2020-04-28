@@ -38,7 +38,7 @@
             <el-button slot="append" icon="el-icon-search" @click="initUser()"></el-button>
             <el-button slot="append" icon="el-icon-refresh" @click="clearQueryCondition()"></el-button>
 
-            <a href="http://127.0.0.1:8002/api/user/ExcelUserInfo" style="color:black;font-size:13px;margin-left:30px;">导出数据</a>
+            <a href="http://192.168.196.102:8002/api/user/ExcelUserInfo" style="color:black;font-size:13px;margin-left:30px;">导出数据</a>
         </div>
       
       <el-divider><i class="el-icon-caret-bottom"></i></el-divider>
@@ -487,6 +487,7 @@ export default {
                 data: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data',  // 文件上传
+                    "Authorization":"Bearer "+that.token
                     // 'Content-Type': 'application/x-www-form-urlencoded',  // 表单
                     //'Content-Type': 'application/json;charset=UTF-8'  // json
                 },
@@ -519,12 +520,16 @@ export default {
       },
       resetPwd()  //重置密码
       {
+         console.log(12321312);
           if(this.idList)
           {
             if(confirm("确定要重置密码?"))
             {
-              this.$axios.put('api/admin/user/resetPwd?idList='+this.idList,{headers:{"Authorization":"Bearer "+this.token}}).then((response)=>{
-                this.$message.success("操作成功!!");
+              this.$axios.get('api/admin/user/resetPassword?idList='+this.idList,{headers:{"Authorization":"Bearer "+this.token}}).then((response)=>{
+                if(response.data==true)
+                {
+                  this.$message.success("操作成功!!");
+                }
               })
             }
           }else{
