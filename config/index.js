@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
       '/api/**': {
         target: 'http://192.168.196.102:9100/study-admin/'
-      },
+      }
     },
 
     // Various Dev Server settings
