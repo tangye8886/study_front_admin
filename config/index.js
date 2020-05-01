@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api/**': {
-        target: 'http://192.168.196.102:9100/study-admin/'
+        target: 'http://127.0.0.1:9100/study-admin/'
       }
     },
 

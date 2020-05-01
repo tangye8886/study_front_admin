@@ -327,11 +327,11 @@ export default {
        openLink(val){
           let that=this;
           that.checkedCities=[];
-          this.dialogFormVisible2=true;
-          this.$axios.get('api/admin/user/userRole/query/'+val.toString(),{headers:{"Authorization":"Bearer "+this.token}}).then((response)=>{
+          that.dialogFormVisible2=true;
+          that.$axios.get('api/admin/user/userRole/query/'+val.toString(),{headers:{"Authorization":"Bearer "+that.token}}).then((response)=>{
               let mydata=response.data.data;
-              this.form.id=mydata.id;
-              this.form.name=mydata.name;
+              that.form.id=mydata.id;
+              that.form.name=mydata.name;
           });
           //val:  角色ID
           //初始化 多选框的值
@@ -342,19 +342,21 @@ export default {
           });
        },
        linkMenu(){
+          let that=this;
             // this.form.id :  单击记录的 角色ID
           if(confirm("确定关联?"))
           {
                 let meneidList=[];
                //关联菜单
-                this.checkedCities.forEach(res=>{
+                that.checkedCities.forEach(res=>{
                     meneidList.push(res);
                 });
-                let url='api/admin/menu/roleMenu/addManyRoleMenu?roleid='+this.form.id+'&menuid='+meneidList.toString();
-                this.$axios.get(url,{headers:{"Authorization":"Bearer "+this.token}}).then((response)=>{
-                 this.$message.success("关联成功");
+                console.log(meneidList);
+                let url='api/admin/menu/roleMenu/addManyRoleMenu?roleid='+that.form.id+'&menuid='+meneidList.toString();
+                that.$axios.get(url,{headers:{"Authorization":"Bearer "+that.token}}).then((response)=>{
+                 that.$message.success("关联成功");
                 });
-                this.dialogFormVisible2=false;
+                that.dialogFormVisible2=false;
           }
        },
        handleCheckedCitiesChange(value) {
