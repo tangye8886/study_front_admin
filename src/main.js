@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 Vue.prototype.$ajax = axios
 Vue.prototype.$qs = qs
 Vue.prototype.$axios = axios
-axios.defaults.baseURL='http://127.0.0.1:9100/study-admin/'
+axios.defaults.baseURL='http://192.168.196.102:9100/study-admin/'
 Vue.prototype.$http=axios
 Vue.prototype.$$message=Message
 
