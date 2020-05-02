@@ -28,7 +28,7 @@
             <el-select v-model="teacherQuery" placeholder="请选择讲师"  v-if="optFlag">
                   <el-option v-for="item in teacherList"
                     :key="item.id"
-                    :label="item.nick"
+                    :label="item.username"
                     :value="item.id">
                   </el-option>
             </el-select>
@@ -134,7 +134,7 @@
                 <el-select v-model="form.teacher" placeholder="请选择讲师" :disabled="isQuery">
                   <el-option v-for="item in teacherList"
                     :key="item.id"
-                    :label="item.username"
+                    :label="item.nick"
                     :value="item.id">
                   </el-option>
                 </el-select>
