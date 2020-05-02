@@ -324,7 +324,7 @@ export default {
                   });
               }
           }else{
-            alert('请选择记录！');
+            that.$message.error("请选择记录！");
           }
       },
       initUser()  //初始化数据
@@ -526,7 +526,6 @@ export default {
       },
       resetPwd()  //重置密码
       {
-         console.log(12321312);
           if(this.idList)
           {
             if(confirm("确定要重置密码?"))

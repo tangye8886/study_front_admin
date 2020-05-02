@@ -182,7 +182,7 @@ export default {
                   });
               }
           }else{
-            alert('请选择记录！');
+            that.$message.error("请选择记录！");
           }
       },
       initApi()  //初始化数据

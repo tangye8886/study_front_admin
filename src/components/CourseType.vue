@@ -167,7 +167,7 @@ export default {
                   });
               }
           }else{
-            alert('请选择记录！');
+            this.$message.error("请选择记录！");
           }
       },
       initCourseType()  //初始化数据
