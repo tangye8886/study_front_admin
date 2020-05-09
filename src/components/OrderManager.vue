@@ -12,7 +12,7 @@
           <el-button type="danger" :disabled="false"
           @click="delOrder()"  icon="el-icon-delete" circle></el-button>
          <!-- 新增按钮-->
-          <el-button type="success" :disabled="false"
+          <el-button type="success" :disabled="!optFlag"
                  @click="addOrder()"  icon="el-icon-plus" circle></el-button>
       </el-row>
 
@@ -194,6 +194,7 @@ export default {
       currentUserRole:sessionStorage.getItem('currentUserRole'),
       token:sessionStorage.getItem('token'),
       resubmit:false,
+      optFlag:false,
       tableData: [],
       idList:[],
       statusList:[{"id":1,"name":"正常"},{"id":0,"name":"停用"}],
@@ -239,6 +240,10 @@ export default {
     }
   },
   mounted () {
+      if(this.currentUserRole==1)
+      {
+        this.optFlag=true;
+      }
       this.initOrder();
   },
   methods: {

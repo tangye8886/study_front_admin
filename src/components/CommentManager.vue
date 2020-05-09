@@ -51,7 +51,7 @@
               width="200">
             </el-table-column>
             <el-table-column
-              prop="userDetail.username"
+              prop="userDetail.nick"
               label="评论者"
               width="100">
             </el-table-column>
